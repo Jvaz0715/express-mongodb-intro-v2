@@ -38,6 +38,17 @@ router.put('/update-user-by-id/:id', function(req,res){
       res.json({ message: "success", data: updatedPayload});
     }
   })
+});
+
+// delete a user
+router.delete("/delete-user-by-id/:id", function(req, res){
+  userController.deleteUserById(req.params.id, function(err, deletedPayload){
+    if(err){
+      res.status(500).json({ message: "Error", erro: err });
+    } else {
+      res.json({ message: "success", data: deletedPayload})
+    }
+  })
 })
 
 module.exports = router;

@@ -47,4 +47,13 @@ module.exports = {
 
 
    },
+   deleteUserById: function(id, callback){
+      User.findByIdAndRemove({_id: id}, function(err, deletedPayload){
+         if(err){
+            callback(err, null);
+         } else {
+            callback(null, deletedPayload);
+         }
+      })
+   },
 };
