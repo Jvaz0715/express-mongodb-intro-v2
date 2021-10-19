@@ -16,6 +16,17 @@ router.get("/get-all-users", function(req,res){
       res.json({message: "success", data: payload})
     }
   })
-})
+});
+
+// creat a new user
+router.post('/create-user', function(req, res){
+  userController.createUser(req.body, function(err, payload){
+    if (err) {
+      res.status(500).json({ message: "Error", error: err });
+    } else {
+      res.json({ message: "success", data: payload });
+    }
+  });
+});
 
 module.exports = router;

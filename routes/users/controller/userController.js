@@ -14,4 +14,21 @@ module.exports = {
          }
       });
    },
+   createUser: function(body, callback){
+      let createdUser = new User({
+         firstName: body.firstName,
+         lastName: body.lastName,
+         password: body.password,
+         email: body.email,
+         username: body.username,
+      });
+
+      createdUser.save(function(err, payload){
+         if(err){
+            callback(err, null);
+         } else {
+            callback(null, payload);
+         }
+      })
+   }
 };
