@@ -1,13 +1,26 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+const createError = require('http-errors');
+const express = require('express');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users/usersRouter');
+const mongoose = require("mongoose");
 
-var app = express();
+mongoose
+  .connect("mongodb://localhost:27017/express-mongodb-intro-v2", {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => {
+    console.log("MONGODB CONNECTED")
+  })
+  .catch(function(e){
+    console.log(e)
+  })
+
+const indexRouter = require('./routes/index');
+const usersRouter = require('./routes/users/usersRouter');
+
+const app = express();
 
 app.use(logger('dev'));
 app.use(express.json());
