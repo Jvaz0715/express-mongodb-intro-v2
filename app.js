@@ -3,6 +3,7 @@ const express = require('express');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
+//mongodb driver
 const mongoose = require("mongoose");
 
 mongoose
@@ -17,7 +18,7 @@ mongoose
     console.log(e)
   })
 
-const indexRouter = require('./routes/index');
+const indexRouter = require('./routes/indexRouter');
 const usersRouter = require('./routes/users/usersRouter');
 
 const app = express();
