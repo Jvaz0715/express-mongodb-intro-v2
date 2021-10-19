@@ -29,4 +29,15 @@ router.post('/create-user', function(req, res){
   });
 });
 
+// update a user
+router.put('/update-user-by-id/:id', function(req,res){
+  userController.updateUserById(req.params.id, req.body, function(err, updatedPayload){
+    if(err){
+      res.status(500).json({ message: "Error", erro: err });
+    } else {
+      res.json({ message: "success", data: updatedPayload});
+    }
+  })
+})
+
 module.exports = router;

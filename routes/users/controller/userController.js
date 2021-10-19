@@ -30,5 +30,21 @@ module.exports = {
             callback(null, payload);
          }
       })
-   }
+   },
+   updateUserById: function(id, body, callback){
+      User.findByIdAndUpdate(
+         {_id: id}, 
+         body, 
+         {new: true}, // <---- if you don't put this. when the res.json returns, it'll show old data rather than new data or change
+         function(err, updatedPayload){
+            if (err){
+               callback(err, null);
+            } else {
+               callback(null, updatedPayload);
+            }
+         }
+      );
+
+
+   },
 };
