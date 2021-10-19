@@ -15,7 +15,8 @@ router.get("/get-all-users", function(req,res){
     } else {
       res.json({message: "success", data: payload})
     }
-  })
+  });
+  
 });
 
 // creat a new user
@@ -33,7 +34,7 @@ router.post('/create-user', function(req, res){
 router.put('/update-user-by-id/:id', function(req,res){
   userController.updateUserById(req.params.id, req.body, function(err, updatedPayload){
     if(err){
-      res.status(500).json({ message: "Error", erro: err });
+      res.status(500).json({ message: "Error", error: err });
     } else {
       res.json({ message: "success", data: updatedPayload});
     }
@@ -44,7 +45,7 @@ router.put('/update-user-by-id/:id', function(req,res){
 router.delete("/delete-user-by-id/:id", function(req, res){
   userController.deleteUserById(req.params.id, function(err, deletedPayload){
     if(err){
-      res.status(500).json({ message: "Error", erro: err });
+      res.status(500).json({ message: "Error", error: err });
     } else {
       res.json({ message: "success", data: deletedPayload})
     }
