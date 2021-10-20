@@ -43,7 +43,19 @@ module.exports = {
       });
    },
    // update existing user by id
-   updateUserById: function(id, body, callback){},
+   updateUserById: function(id, body){
+      return new Promise((resolve, reject) => {
+         User.findByIdAndUpdate( {_id: id}, body, {new: true})
+            .then(updatedPayload => { resolve(updatedPayload) })
+            .catch(error => { reject(error) });
+      });
+   },
    // delete existing user by id
-   deleteUserById: function(id, callback){},
+   deleteUserById: function(id){
+      return new Promise((resolve, reject) => {
+         User.findByIdAndDelete({_id: id})
+            .then(deletedPayload => {resolve(deletedPayload) })
+            .catch(error => { reject(error)});
+      });
+   },
 };

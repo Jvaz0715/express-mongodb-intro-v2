@@ -3,6 +3,8 @@ var router = express.Router();
 const {
   getAllUsers,
   createUser,
+  updateUserById,
+  deleteUserById,
 
 } = require("./controller/userController");
 
@@ -34,9 +36,25 @@ router.post('/create-user', function(req, res){
 });
 
 // update a user
-router.put('/update-user-by-id/:id', function(req,res){});
+router.put('/update-user-by-id/:id', function(req,res){
+  updateUserById(req.params.id, req.body)
+    .then((updatedPayload) =>{
+      res.json({ message: "success", data: updatedPayload});
+    })
+    .catch((error)=>{
+      res.status(500).json({ message: "error", error });
+    })
+});
 
 // delete a user
-router.delete("/delete-user-by-id/:id", function(req, res){});
+router.delete("/delete-user-by-id/:id", function(req, res){
+  deleteUserById(req.params.id)
+    .then((deletedPayload) =>{
+      res.json({ message: "success", data: deletedPayload });
+    })
+    .catch((error)=> {
+      res.status(500).json({ message: "error", error });
+    })
+});
 
 module.exports = router;
