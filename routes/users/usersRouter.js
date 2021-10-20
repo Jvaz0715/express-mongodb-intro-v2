@@ -14,47 +14,15 @@ router.get('/', function(req, res, next) {
 });
 
 // get all users
-router.get("/get-all-users", function(req,res){
-  getAllUsers()
-    .then((payload) => {
-      res.json({ message: "success", data: payload });
-    })
-    .catch((error) => {
-      res.status(500).json({ message: "error", error });
-    })
-});
+router.get("/get-all-users", function(req,res){});
 
 // creat a new user
-router.post('/create-user', function(req, res){
-  createUser(req.body)
-    .then((payload) =>{
-      res.json({ message: "success", data: payload });
-    })
-    .catch((error) =>{
-      res.status(500).json({ message: "error", error });
-    })
-});
+router.post('/create-user', function(req, res){});
 
 // update a user
-router.put('/update-user-by-id/:id', function(req,res){
-  updateUserById(req.params.id, req.body)
-    .then((updatedPayload) =>{
-      res.json({ message: "success", data: updatedPayload});
-    })
-    .catch((error)=>{
-      res.status(500).json({ message: "error", error });
-    })
-});
+router.put('/update-user-by-id/:id', function(req,res){});
 
 // delete a user
-router.delete("/delete-user-by-id/:id", function(req, res){
-  deleteUserById(req.params.id)
-    .then((deletedPayload) =>{
-      res.json({ message: "success", data: deletedPayload });
-    })
-    .catch((error)=> {
-      res.status(500).json({ message: "error", error });
-    })
-});
+router.delete("/delete-user-by-id/:id", function(req, res){});
 
 module.exports = router;
