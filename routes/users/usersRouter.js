@@ -1,6 +1,9 @@
 var express = require('express');
 var router = express.Router();
-const userController = require("../users/controller/userController")
+const {
+  getAllUsers,
+
+} = require("./controller/userController");
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
@@ -8,7 +11,15 @@ router.get('/', function(req, res, next) {
 });
 
 // get all users
-router.get("/get-all-users", function(req,res){});
+router.get("/get-all-users", function(req,res){
+  getAllUsers()
+    .then((payload) => {
+      res.json({ message: "success", data: payload });
+    })
+    .catch((error) => {
+      res.status(500).json({ message: "error", error });
+    })
+});
 
 // creat a new user
 router.post('/create-user', function(req, res){});
