@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 const {
   getAllUsers,
+  createUser,
 
 } = require("./controller/userController");
 
@@ -22,7 +23,15 @@ router.get("/get-all-users", function(req,res){
 });
 
 // creat a new user
-router.post('/create-user', function(req, res){});
+router.post('/create-user', function(req, res){
+  createUser(req.body)
+    .then((payload) =>{
+      res.json({ message: "success", data: payload });
+    })
+    .catch((error) =>{
+      res.status(500).json({ message: "error", error });
+    })
+});
 
 // update a user
 router.put('/update-user-by-id/:id', function(req,res){});
