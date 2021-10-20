@@ -14,23 +14,15 @@ router.get('/', function(req, res, next) {
 });
 
 // get all users
-router.get("/get-all-users", async function(req,res){
-
-});
+router.get("/get-all-users", getAllUsers);
 
 // creat a new user
-router.post('/create-user', async function(req, res){
-
-});
+router.post('/create-user', createUser);
 
 // update a user
-router.put('/update-user-by-id/:id', async function(req, res){
-
-});
+router.put('/update-user-by-id/:id', updateUserById);
 
 // delete a user
-router.delete("/delete-user-by-id/:id", async function(req, res){
-
-});
+router.delete("/delete-user-by-id/:id", deleteUserById);
 
 module.exports = router;
