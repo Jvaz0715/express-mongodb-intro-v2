@@ -14,7 +14,14 @@ router.get('/', function(req, res, next) {
 });
 
 // get all users
-router.get("/get-all-users", function(req,res){});
+router.get("/get-all-users", async function(req,res){
+  try{
+    let foundAllUsers = await getAllUsers();
+    res.json({ message: "success", foundAllUsers });
+  } catch(error){
+    res.json({ message: "failure", error: error.message });
+  };
+});
 
 // creat a new user
 router.post('/create-user', function(req, res){});

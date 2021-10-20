@@ -1,13 +1,30 @@
 const User = require("../model/User");
 const bcrypt = require("bcryptjs");
 
+/* async/await will cut down on code, while using Promises under the hood! */
+
+// get all users function
+async function getAllUsers(){
+   try{
+      let foundAllUsers = await User.find({});
+      return foundAllUsers;
+   } catch(error) {
+      return error;
+   };
+};
+
+ // create new user
+async function createUser(){};
+
+// update existing user by id
+async function updateUserById(){};
+
+// delete existing user by id
+async function deleteUserById(){};
+
 module.exports = {
-   // get all users function
-   getAllUsers: function(){},
-   // create new user
-   createUser: function(body){},
-   // update existing user by id
-   updateUserById: function(id, body){},
-   // delete existing user by id
-   deleteUserById: function(id){},
+   getAllUsers,
+   createUser,
+   updateUserById,
+   deleteUserById,
 };
